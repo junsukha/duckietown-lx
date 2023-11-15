@@ -32,4 +32,4 @@ def listener():
 
 if __name__ == '__main__':
     # TODO: which of the two functions we have written in this file do we need to run?
-    listener
+    listener() 

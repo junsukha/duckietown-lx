@@ -8,25 +8,26 @@ import rospy
 from std_msgs.msg import String
 
 # TODO: fill in the message type
-MSG_TYPE = ...
+MSG_TYPE = String
 
 # TODO: set a rate at which you want the node to publish its messages
-PUB_RATE = ... # [Hz] 
+PUB_RATE = 2 # [Hz] 
 
 # TODO: write a message to whoever is listening to you
-MESSAGE_CONTENT = f"<WHAT DO YOU WANT TO SAY?>"
+MESSAGE_CONTENT = f"Hi, I'm Jun"
 
 # you can change the name for the topic you will publish to with this variable
 TOPIC_NAME = 'chatter'
 
 def talker():
     
-    pub = rospy.Publisher(TOPIC_NAME, MSG_TYPE)
+    pub = rospy.Publisher(TOPIC_NAME, MSG_TYPE,queue_size=10)
     """
     The argument `anonymous=True` will add a random number 
     if there are already nodes with the same name
     """
-    rospy.init_node('talker', anonymous=True,queue_size=10)
+    # rospy.init_node('talker', anonymous=True,queue_size=10)
+    rospy.init_node('talker', anonymous=True)
     rate = rospy.Rate(PUB_RATE)
 
     while not rospy.is_shutdown():

@@ -33,8 +33,8 @@ class TestPIDOutput():
         )
 
         sim = VerticalDrone(
-                        pid=my_pid_instance,
-                        step_size=10,
+                        pid_controller=my_pid_instance,
+                        # step_size=10,
                         drag_coeff=drag_coeff,
                         latency=latency,
                         sensor_noise=noise,
@@ -45,6 +45,7 @@ class TestPIDOutput():
         return sim.pwm_commands
 
     def simulate_with_limits(self):
+        
         pwm_commands=self.simulate()
         fig,ax, = plt.subplots()
         ax.plot(pwm_commands)
@@ -60,6 +61,8 @@ class TestPIDOutput():
         plt.axhline(y=self.pwm_lower_limit,xmin=-100,xmax=100,color='r',linestyle='-')
         plt.axhline(y=self.pwm_upper_limit,xmin=-100,xmax=100,color='r',linestyle='-')
         fig.show()
+        # fig.close()
+        # plt.close()
 
 if __name__ == "__main__":
     from student_pid_class import PID
